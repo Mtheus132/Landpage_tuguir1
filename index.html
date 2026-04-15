@@ -106,7 +106,8 @@ html {
 <a class="font-['Manrope'] tracking-widest uppercase text-[0.90rem] font-light text-[#ebbf8a] font-medium border-b border-[#ebbf8a]/30 pb-1" href="#top">Home</a>
 <a class="font-['Manrope'] tracking-widest uppercase text-[0.90rem] font-light text-white/70 hover:text-[#ebbf8a] transition-colors duration-300" href="#lançamentos">Lançamentos 2026</a>
 <a class="font-['Manrope'] tracking-widest uppercase text-[0.90rem] font-light text-white/70 hover:text-[#ebbf8a] transition-colors duration-300" href="#historia">Nossa História</a>
-<a class="font-['Manrope'] tracking-widest uppercase text-[0.90rem] font-light text-white/70 hover:text-[#ebbf8a] transition-colors duration-300" href="#contato">Contato</a>
+<a class="font-['Manrope'] tracking-widest uppercase text-[0.90rem] font-light text-white/70 hover:text-[#ebbf8a] transition-colors duration-300" href="https://manual.grupotuguir.com.br/">Manuais</a><a class="font-['Manrope'] tracking-widest uppercase text-[0.90rem] font-light text-white/70 hover:text-[#ebbf8a] transition-colors duration-300" href="#contato">Contato</a>
+
 </div>
 <div class="flex items-center space-x-6">
 
@@ -230,14 +231,119 @@ html {
     </div>
   </div>
 </section>
-<!-- Heritage Section -->
+
+<section class="py-32 bg-surface">
+<div class="max-w-screen-2xl mx-auto px-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+
+<!-- Create Your Own Brand Form -->
+<div class="bg-surface-container-low p-10 md:p-14 border border-outline-variant/10 hover:border-primary/20 transition-colors">
+  <h3 class="text-primary font-label tracking-[0.2em] uppercase text-xs mb-4">Inicie seu Negócio!</h3>
+  <h4 class="text-3xl font-headline font-bold mb-8">Crie Sua Própria Marca</h4>
+  <form class="space-y-6" id="contatoForm">
+    <div>
+      <label class="block text-[0.65rem] uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Nome Completo</label>
+      <input id="nome" class="w-full bg-surface-container-highest border-b border-outline-variant/30 py-4 px-4 text-on-surface focus:outline-none focus:border-primary transition-colors font-light" placeholder="Ex: João Silva" type="text" required/>
+    </div>
+    <div>
+      <label class="block text-[0.65rem] uppercase tracking-widest text-on-surface-variant mb-2 font-bold">E-mail Corporativo</label>
+      <input id="email" class="w-full bg-surface-container-highest border-b border-outline-variant/30 py-4 px-4 text-on-surface focus:outline-none focus:border-primary transition-colors font-light" placeholder="seu@email.com" type="email" required/>
+    </div>
+    <div>
+      <label class="block text-[0.65rem] uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Detalhes do Projeto</label>
+      <textarea id="projeto" class="w-full bg-surface-container-highest border-b border-outline-variant/30 py-4 px-4 text-on-surface focus:outline-none focus:border-primary transition-colors font-light resize-none" placeholder="Descreva brevemente sua visão..." rows="4" required></textarea>
+    </div>
+    <button onclick="enviarWhatsApp()" class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary-fixed text-[0.7rem] font-bold uppercase tracking-[0.2em] flex items-center justify-center space-x-2 hover:scale-[1.02] transition-transform active:scale-95 mt-4" type="button">
+      <span class="material-symbols-outlined text-lg">chat</span>
+      <span>Consultar Via WhatsApp</span>
+    </button>
+  </form>
+</div>
+
+<script>
+function enviarWhatsApp() {
+  const telefone = "551156664996"; 
+  
+  const nome = document.getElementById('nome').value;
+  const email = document.getElementById('email').value;
+  const projeto = document.getElementById('projeto').value;
+
+  if (nome === "" || email === "" || projeto === "") {
+    alert("Por favor, preencha todos os campos.");
+    return;
+  }
+
+  const mensagem = `Olá! Tenho interesse em criar minha própria marca.%0A%0A` +
+                   `*Nome:* ${nome}%0A` +
+                   `*E-mail:* ${email}%0A` +
+                   `*Projeto:* ${projeto}`;
+
+  const url = `https://wa.me/${telefone}?text=${mensagem}`;
+  
+  window.open(url, '_blank');
+}
+</script>
+<!-- Representative Form -->
+<div class="bg-surface-container-low p-10 md:p-14 border border-outline-variant/10 hover:border-primary/20 transition-colors">
+<h3 class="text-primary font-label tracking-[0.2em] uppercase text-xs mb-4">Faça parte do GrupoTuguir</h3>
+<h4 class="text-3xl font-headline font-bold mb-8">Seja Nosso Representante</h4>
+<form class="space-y-6">
+<div>
+<label class="block text-[0.65rem] uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Nome / Razão Social</label>
+<input id="rep-nome" class="w-full bg-surface-container-highest border-b border-outline-variant/30 py-4 px-4 text-on-surface focus:outline-none focus:border-primary transition-colors font-light" placeholder="Sua empresa ou nome" type="text"/>
+</div>
+<div>
+<label class="block text-[0.65rem] uppercase tracking-widest text-on-surface-variant mb-2 font-bold">E-mail de Contato</label>
+<input id="rep-email" class="w-full bg-surface-container-highest border-b border-outline-variant/30 py-4 px-4 text-on-surface focus:outline-none focus:border-primary transition-colors font-light" placeholder="contato@empresa.com" type="email"/>
+</div>
+<div>
+<label class="block text-[0.65rem] uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Experiência no Mercado</label>
+<textarea id="rep-experiencia" class="w-full bg-surface-container-highest border-b border-outline-variant/30 py-4 px-4 text-on-surface focus:outline-none focus:border-primary transition-colors font-light resize-none" placeholder="Conte-nos sobre sua atuação no mercado de luxo..." rows="4"></textarea>
+</div>
+<button onclick="enviarRepresentante()" class="w-full py-4 border border-primary/50 text-primary text-[0.7rem] font-bold uppercase tracking-[0.2em] flex items-center justify-center space-x-2 hover:bg-primary/5 transition-colors active:scale-95 mt-4" type="button">
+<span class="material-symbols-outlined text-lg">chat</span>
+<span>Candidatar-se Via WhatsApp</span>
+</button>
+</form>
+</div>
+
+<script>
+function enviarRepresentante() {
+  const telefone = "551156664996"; 
+  
+  const nome = document.getElementById('rep-nome').value;
+  const email = document.getElementById('rep-email').value;
+  const experiencia = document.getElementById('rep-experiencia').value;
+
+  if (!nome || !email || !experiencia) {
+    alert("Por favor, preencha todos os campos para se candidatar.");
+    return;
+  }
+
+  const mensagem = `Olá! Gostaria de me candidatar como representante do GrupoTuguir.%0A%0A` +
+                   `*Nome/Razão Social:* ${nome}%0A` +
+                   `*E-mail:* ${email}%0A` +
+                   `*Experiência:* ${experiencia}`;
+
+  const url = `https://wa.me/${telefone}?text=${mensagem}`;
+  
+  window.open(url, '_blank');
+}
+</script>
+</div>
+</div>
+</section>
+
+<!-- Heritage Section src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQG3r1ylVEa9nAW-bgfgNq3QmAOm7X-EXInjyaZlMGYp6owEFEsHsGnAwsbnEugoKq97CsJF_t-Az18Knv3BqRJi2UX4sEZsdxi9h3Q8-jyvL6TKqh2rrQ8cH8Bclf2DmjP9eLriAlCd8INIkdS7-1F9WHyxNZb8qC0vE6JI5t37pjb7YGo7Ytk9DyflGjTIQMOyj_fLLEcE_O8-qoV_1Ues6aR1-MoGTAMpIqmlDfL7tuWUdHVJQC78pCM8CaObBcbDydMLDC164"/>-->
 <section id="historia" class="py-40 bg-surface overflow-hidden">
 <div class="max-w-screen-2xl mx-auto px-10">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
 <div class="relative">
 <div class="absolute -top-12 -left-12 w-48 h-48 border border-primary/20 z-0"></div>
 <div class="relative z-10 bg-surface-container-low p-4">
-<img alt="" class="w-full aspect-[4/5] object-cover" data-alt="close-up of a master watchmaker hands using specialized tools to assemble a delicate watch movement, warm focused workshop light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQG3r1ylVEa9nAW-bgfgNq3QmAOm7X-EXInjyaZlMGYp6owEFEsHsGnAwsbnEugoKq97CsJF_t-Az18Knv3BqRJi2UX4sEZsdxi9h3Q8-jyvL6TKqh2rrQ8cH8Bclf2DmjP9eLriAlCd8INIkdS7-1F9WHyxNZb8qC0vE6JI5t37pjb7YGo7Ytk9DyflGjTIQMOyj_fLLEcE_O8-qoV_1Ues6aR1-MoGTAMpIqmlDfL7tuWUdHVJQC78pCM8CaObBcbDydMLDC164"/>
+<img alt="" class="w-full aspect-[4/5] object-cover" data-alt="close-up of a master watchmaker hands using specialized tools to assemble a delicate watch movement, warm focused workshop light" 
+src="/images/EMPRESA.jpeg"/>
 </div>
 <div class="absolute -bottom-8 -right-8 bg-primary-container p-8 hidden md:block">
 <p class="text-on-primary-container font-headline font-bold text-4xl">1974</p>
@@ -336,9 +442,9 @@ html {
 </div>
 <!-- WhatsApp CTA -->
 <div id="contato" class="bg-primary-container p-10 flex flex-col items-center text-center">
-<h4 class="text-on-primary-container font-headline font-bold text-xl mb-3">Precisando de assistência?</h4>
-<p class="text-on-primary-container/80 text-sm font-light mb-8">Entre em contato agora mesmo pelo WhatsApp.</p>
-<a class="inline-flex items-center space-x-3 px-10 py-4 bg-on-primary-fixed text-primary text-xs font-bold uppercase tracking-[0.2em] hover:scale-105 transition-transform active:scale-95 shadow-xl" href="https://wa.me/551159734430?text=Olá">
+<h4 class="text-on-primary-container font-headline font-bold text-xl mb-3">Quer Revender?</h4>
+<p class="text-on-primary-container/80 text-sm font-light mb-8">Entre em contato agora mesmo pelo WhatsApp e seja um revendedor Tuguir.</p>
+<a class="inline-flex items-center space-x-3 px-10 py-4 bg-on-primary-fixed text-primary text-xs font-bold uppercase tracking-[0.2em] hover:scale-105 transition-transform active:scale-95 shadow-xl" href="https://wa.me/551156664996?text=Olá,%20quero%20revender%20relógios%20Tuguir!">
 <span class="material-symbols-outlined text-lg">chat</span>
 <span>Falar no Whatsapp Oficial</span>
 </a>
