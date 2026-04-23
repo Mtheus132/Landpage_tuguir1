@@ -44,32 +44,29 @@ function enviarRepresentante() {
   window.open(url, '_blank');
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Fica "escutando" qualquer clique no corpo do site
-    document.body.addEventListener('click', function(e) {
-        
-        // Verifica se o que foi clicado (ou o pai do elemento clicado) é um link com #
-        const link = e.target.closest('a[href^="#"]');
-        
-        // Se não for um link de âncora, ignora e deixa o site seguir a vida
-        if (!link) return;
+// Removemos o DOMContentLoaded. Agora o documento inteiro fica "vigiando" o clique o tempo todo.
+document.addEventListener('click', function(e) {
+    
+    // Procura o link com # mais próximo de onde o mouse clicou
+    const link = e.target.closest('a[href^="#"]');
+    
+    if (!link) return;
 
-        const destinoTag = link.getAttribute('href');
+    const href = link.getAttribute('href');
+    if (href === '#') return;
+
+    // A JOGADA DE MESTRE: Removemos a # do texto e buscamos direto pelo ID
+    // Isso impede que o "ç" de "lançamentos" quebre o código!
+    const idDestino = href.substring(1); 
+    const secaoDestino = document.getElementById(idDestino);
+
+    if (secaoDestino) {
+        e.preventDefault(); // <-- O bloqueio definitivo da hashtag na URL
         
-        // Se for só um "#" vazio, ignora
-        if (destinoTag === '#') return;
-
-        const secaoDestino = document.querySelector(destinoTag);
-
-        // Se a seção existir no site, ele bloqueia a URL e rola suave
-        if (secaoDestino) {
-            e.preventDefault(); // <-- O bloqueio da hashtag
-            
-            secaoDestino.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
+        secaoDestino.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
 });
 
