@@ -261,29 +261,7 @@ html {
   </form>
 </div>
 
-<script>
-function enviarWhatsApp() {
-  const telefone = "551156664996"; 
-  
-  const nome = document.getElementById('nome').value;
-  const email = document.getElementById('email').value;
-  const projeto = document.getElementById('projeto').value;
-
-  if (nome === "" || email === "" || projeto === "") {
-    alert("Por favor, preencha todos os campos.");
-    return;
-  }
-
-  const mensagem = `Olá! Tenho interesse em criar minha própria marca.%0A%0A` +
-                   `*Nome:* ${nome}%0A` +
-                   `*E-mail:* ${email}%0A` +
-                   `*Projeto:* ${projeto}`;
-
-  const url = `https://wa.me/${telefone}?text=${mensagem}`;
-  
-  window.open(url, '_blank');
-}
-</script>
+<script src="/js/script.js"> </script>
 <!-- Representative Form -->
 <div class="bg-surface-container-low p-10 md:p-14 border border-outline-variant/10 hover:border-primary/20 transition-colors">
 <h3 class="text-primary font-label tracking-[0.2em] uppercase text-xs mb-4">Faça parte do GrupoTuguir</h3>
@@ -307,30 +285,6 @@ function enviarWhatsApp() {
 </button>
 </form>
 </div>
-
-<script>
-function enviarRepresentante() {
-  const telefone = "551156664996"; 
-  
-  const nome = document.getElementById('rep-nome').value;
-  const email = document.getElementById('rep-email').value;
-  const experiencia = document.getElementById('rep-experiencia').value;
-
-  if (!nome || !email || !experiencia) {
-    alert("Por favor, preencha todos os campos para se candidatar.");
-    return;
-  }
-
-  const mensagem = `Olá! Gostaria de me candidatar como representante do GrupoTuguir.%0A%0A` +
-                   `*Nome/Razão Social:* ${nome}%0A` +
-                   `*E-mail:* ${email}%0A` +
-                   `*Experiência:* ${experiencia}`;
-
-  const url = `https://wa.me/${telefone}?text=${mensagem}`;
-  
-  window.open(url, '_blank');
-}
-</script>
 </div>
 </div>
 </section>
