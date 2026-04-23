@@ -44,23 +44,28 @@ function enviarRepresentante() {
   window.open(url, '_blank');
 }
 
-// Seleciona todos os links do menu que começam com "#"
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        // Esta linha é a mágica: bloqueia a # de ir para a URL
-        e.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+    // Fica "escutando" qualquer clique no corpo do site
+    document.body.addEventListener('click', function(e) {
+        
+        // Verifica se o que foi clicado (ou o pai do elemento clicado) é um link com #
+        const link = e.target.closest('a[href^="#"]');
+        
+        // Se não for um link de âncora, ignora e deixa o site seguir a vida
+        if (!link) return;
 
-        // Pega o ID da seção de destino clicada
-        const targetId = this.getAttribute('href');
+        const destinoTag = link.getAttribute('href');
+        
+        // Se for só um "#" vazio, ignora
+        if (destinoTag === '#') return;
 
-        // Ignora se o link for apenas um "#" vazio
-        if(targetId === '#') return;
+        const secaoDestino = document.querySelector(destinoTag);
 
-        const targetElement = document.querySelector(targetId);
-
-        // Faz a rolagem suave até a seção correspondente
-        if (targetElement) {
-            targetElement.scrollIntoView({
+        // Se a seção existir no site, ele bloqueia a URL e rola suave
+        if (secaoDestino) {
+            e.preventDefault(); // <-- O bloqueio da hashtag
+            
+            secaoDestino.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
