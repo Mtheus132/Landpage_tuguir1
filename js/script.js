@@ -1,4 +1,4 @@
-console.log("Funcionou?")
+console.log("Funcionou?");
 
 function enviarWhatsApp() {
   const telefone = "551156664996"; 
@@ -20,7 +20,7 @@ function enviarWhatsApp() {
   const url = `https://wa.me/${telefone}?text=${mensagem}`;
   
   window.open(url, '_blank');
-}
+};
 
 function enviarRepresentante() {
   const telefone = "551156664996"; 
@@ -42,9 +42,9 @@ function enviarRepresentante() {
   const url = `https://wa.me/${telefone}?text=${mensagem}`;
   
   window.open(url, '_blank');
-}
+};
 
-<script>
+
   // Pega apenas os links do menu de navegação superior
   document.querySelectorAll('nav a[href^="#"]').forEach(link => {
       link.addEventListener('click', function(e) {
@@ -71,7 +71,5 @@ function enviarRepresentante() {
           }
       });
   });
-</script>
-</body>
-</html>
+
 
