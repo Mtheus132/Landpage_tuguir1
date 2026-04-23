@@ -44,29 +44,25 @@ function enviarRepresentante() {
   window.open(url, '_blank');
 };
 
-
-  // Pega apenas os links do menu de navegação superior
-  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+  // Pega TODOS os links da página que começam com #
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', function(e) {
           
-          // Trava Primária: Tenta bloquear o comportamento padrão do navegador
-          e.preventDefault();
+          e.preventDefault(); // Trava primária
 
           const href = this.getAttribute('href');
           if (href === '#') return;
 
-          // Remove o # e usa o decode para evitar erros com o "ç" de lançamentos
+          // Lê o destino considerando o 'ç'
           const idDestino = decodeURIComponent(href.substring(1));
           const secaoDestino = document.getElementById(idDestino);
 
           if (secaoDestino) {
-              // Rola suavemente até o local
               secaoDestino.scrollIntoView({
                   behavior: 'smooth'
               });
 
-              // Trava Secundária: Se o navegador for teimoso e colocar a hashtag, 
-              // esta linha limpa a URL invisivelmente, deixando apenas o domínio base.
+              // Limpa a URL na mesma hora
               history.replaceState(null, null, window.location.pathname);
           }
       });
