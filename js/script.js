@@ -44,21 +44,27 @@ function enviarRepresentante() {
   window.open(url, '_blank');
 }
 
+// Seleciona todos os links do menu que começam com "#"
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        // Esta linha é a mágica: bloqueia a # de ir para a URL
         e.preventDefault();
 
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
+        // Pega o ID da seção de destino clicada
+        const targetId = this.getAttribute('href');
 
+        // Ignora se o link for apenas um "#" vazio
+        if(targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+
+        // Faz a rolagem suave até a seção correspondente
         if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop,
-                behavior: 'smooth'
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
-
-            // Remove o foco do link para evitar saltos visuais
-            this.blur();
         }
     });
 });
+
