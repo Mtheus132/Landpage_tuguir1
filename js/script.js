@@ -44,29 +44,34 @@ function enviarRepresentante() {
   window.open(url, '_blank');
 }
 
-// Removemos o DOMContentLoaded. Agora o documento inteiro fica "vigiando" o clique o tempo todo.
-document.addEventListener('click', function(e) {
-    
-    // Procura o link com # mais próximo de onde o mouse clicou
-    const link = e.target.closest('a[href^="#"]');
-    
-    if (!link) return;
+<script>
+  // Pega apenas os links do menu de navegação superior
+  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+          
+          // Trava Primária: Tenta bloquear o comportamento padrão do navegador
+          e.preventDefault();
 
-    const href = link.getAttribute('href');
-    if (href === '#') return;
+          const href = this.getAttribute('href');
+          if (href === '#') return;
 
-    // A JOGADA DE MESTRE: Removemos a # do texto e buscamos direto pelo ID
-    // Isso impede que o "ç" de "lançamentos" quebre o código!
-    const idDestino = href.substring(1); 
-    const secaoDestino = document.getElementById(idDestino);
+          // Remove o # e usa o decode para evitar erros com o "ç" de lançamentos
+          const idDestino = decodeURIComponent(href.substring(1));
+          const secaoDestino = document.getElementById(idDestino);
 
-    if (secaoDestino) {
-        e.preventDefault(); // <-- O bloqueio definitivo da hashtag na URL
-        
-        secaoDestino.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-});
+          if (secaoDestino) {
+              // Rola suavemente até o local
+              secaoDestino.scrollIntoView({
+                  behavior: 'smooth'
+              });
+
+              // Trava Secundária: Se o navegador for teimoso e colocar a hashtag, 
+              // esta linha limpa a URL invisivelmente, deixando apenas o domínio base.
+              history.replaceState(null, null, window.location.pathname);
+          }
+      });
+  });
+</script>
+</body>
+</html>
 
