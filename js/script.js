@@ -1,4 +1,4 @@
-console.log("Funcionou?");
+console.log("Meu JS Está vinculado");
 
 function enviarWhatsApp() {
   const telefone = "551156664996"; 
